@@ -20,7 +20,6 @@ module "aks_monitor_workspace" {
   resource_group_name     = "shared-tools"
   resource_group_location = "westeurope"
   monitor_workspace_name  = "shared-aks-monitor"
-  name                    = "shared-aks-monitor"
 
   clusters = {
     non_prod = local.non_prod.aks_id
