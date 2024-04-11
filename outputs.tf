@@ -27,3 +27,18 @@ output "clusters" {
   description = "The list of Kubernetes clusters to monitor."
   value       = var.clusters
 }
+
+output "private_endpoint_ips" {
+  description = "The private endpoint to connect to the Azure Monitor Workspace."
+  value       = length(azurerm_private_endpoint.amw) > 0 ? azurerm_private_endpoint.amw[0].custom_dns_configs[0].ip_addresses : null
+
+}
+output "private_endpoint_dns" {
+  description = "The private endpoint DNS to connect to the Azure Monitor Workspace."
+  value       = length(azurerm_private_endpoint.amw) > 0 ? azurerm_private_endpoint.amw[0].custom_dns_configs[0].fqdn : null
+}
+
+output "private_endpoint_id" {
+  description = "The private endpoint ID to connect to the Azure Monitor Workspace."
+  value       = length(azurerm_private_endpoint.amw) > 0 ? azurerm_private_endpoint.amw[0].id : null
+}

@@ -2,6 +2,8 @@ resource "azurerm_monitor_workspace" "amw" {
   name                = var.monitor_workspace_name
   resource_group_name = var.resource_group_name
   location            = var.resource_group_location
+
+  public_network_access_enabled = var.public_network_access_enabled
 }
 
 resource "azurerm_monitor_data_collection_endpoint" "dce" {
@@ -9,6 +11,22 @@ resource "azurerm_monitor_data_collection_endpoint" "dce" {
   resource_group_name = var.resource_group_name
   location            = var.resource_group_location
   kind                = "Linux"
+}
+
+resource "azurerm_private_endpoint" "amw" {
+  count = var.private_endpoint.subnet_id != null ? 1 : 0
+
+  name                = "${var.monitor_workspace_name}-endpoint"
+  location            = var.resource_group_location
+  resource_group_name = var.resource_group_name
+  subnet_id           = var.private_endpoint.subnet_id
+
+  private_service_connection {
+    name                           = "${var.monitor_workspace_name}-privateserviceconnection"
+    private_connection_resource_id = azurerm_monitor_workspace.amw.id
+    subresource_names              = var.private_endpoint.subresource_names
+    is_manual_connection           = false
+  }
 }
 
 resource "azurerm_monitor_data_collection_rule" "dcr" {

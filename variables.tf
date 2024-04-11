@@ -17,3 +17,18 @@ variable "clusters" {
   description = "List of Kubernetes clusters to monitor."
   type        = map(string)
 }
+
+variable "private_endpoint" {
+  description = "Private endpoint to connect to the Azure Monitor workspace."
+  type = object({
+    subnet_id         = optional(string)
+    subresource_names = optional(list(string))
+  })
+  default = {}
+}
+
+variable "public_network_access_enabled" {
+  description = "Enable or disable public network access to the Azure Monitor workspace."
+  type        = bool
+  default     = true
+}
