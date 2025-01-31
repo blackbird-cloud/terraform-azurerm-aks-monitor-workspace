@@ -61,7 +61,7 @@ module "aks_monitor_workspace" {
 |------|-------------|------|---------|:--------:|
 | <a name="input_clusters"></a> [clusters](#input\_clusters) | List of Kubernetes clusters to monitor. | `map(string)` | n/a | yes |
 | <a name="input_monitor_workspace_name"></a> [monitor\_workspace\_name](#input\_monitor\_workspace\_name) | Name of the Azure Monitor workspace. | `string` | n/a | yes |
-| <a name="input_private_endpoint"></a> [private\_endpoint](#input\_private\_endpoint) | Private endpoint to connect to the Azure Monitor workspace. | <pre>object({<br>    subnet_id         = optional(string)<br>    subresource_names = optional(list(string))<br>  })</pre> | `{}` | no |
+| <a name="input_private_endpoint"></a> [private\_endpoint](#input\_private\_endpoint) | Private endpoint to connect to the Azure Monitor workspace. | <pre>object({<br/>    subnet_id         = optional(string)<br/>    subresource_names = optional(list(string))<br/>  })</pre> | `{}` | no |
 | <a name="input_public_network_access_enabled"></a> [public\_network\_access\_enabled](#input\_public\_network\_access\_enabled) | Enable or disable public network access to the Azure Monitor workspace. | `bool` | `true` | no |
 | <a name="input_resource_group_location"></a> [resource\_group\_location](#input\_resource\_group\_location) | Location of the resource group. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group. | `string` | n/a | yes |
@@ -88,5 +88,5 @@ Checkout our other :point\_right: [terraform modules](https://registry.terraform
 
 ## Copyright
 
-Copyright © 2017-2024 [Blackbird Cloud](https://blackbird.cloud)
+Copyright © 2017-2025 [Blackbird Cloud](https://blackbird.cloud)
 <!-- END_TF_DOCS -->
